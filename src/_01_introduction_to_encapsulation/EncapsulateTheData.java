@@ -1,5 +1,9 @@
 package _01_introduction_to_encapsulation;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
 /*
  * Encapsulation is a way of protecting the data in a class from being
  * unintentionally altered from another class.
@@ -69,7 +73,40 @@ public class EncapsulateTheData {
 	}
 	
 	public void setMemberObj(Object obj) {
+		if(obj instanceof String) {
+			obj = new Object();
+		} else {
+			memberObj = obj;
+		}
+	}
+	
+	@Test
+	void testGettersAndSetters() {
+		EncapsulateTheData etd = new EncapsulateTheData();
 		
+		etd.setItemsRecieved(9);
+		assertEquals(9, etd.getItemsRecieved());
+		etd.setItemsRecieved(-2);
+		assertEquals(0, etd.getItemsRecieved());
+		
+		try {
+			etd.setDegreesTurned(72);
+			assertEquals(72, etd.getDegreesTurned());
+			etd.setDegreesTurned(361);
+			fail("IllegalArgumentException not thrown");
+		} catch(IllegalArgumentException e) {
+			System.out.println("Illegal Argument Exception Thrown");
+		}
+		
+		etd.setNomenclature("Nomenclature");
+		assertEquals("Nomenclature", etd.getNomenclature());
+		etd.setNomenclature("");
+		assertEquals(" ", etd.getNomenclature());
+		
+		etd.setMemberObj(34);
+		assertEquals(34, etd.getMemberObj());
+		etd.setNomenclature("String");
+		assertNotEquals("String", etd.getMemberObj());
 	}
 	
 	public static void main(String[] args) {
