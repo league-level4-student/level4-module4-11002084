@@ -17,12 +17,7 @@ public class PolymorphWindow extends JPanel implements ActionListener{
     private JFrame window;
     private Timer timer;
     
-    Polymorph bluePoly;
-    Polymorph redPoly;
-    Polymorph movingPoly1;
-    Polymorph movingPoly2;
-    Polymorph movingPoly3;
-    Polymorph movingPoly4;
+    Polymorph[] polyList;
     
     public static void main(String[] args) {
    	 new PolymorphWindow().buildWindow();
@@ -36,12 +31,11 @@ public class PolymorphWindow extends JPanel implements ActionListener{
    	 window.pack();
    	 window.setVisible(true);
    	 
-   	 bluePoly = new BluePolymorph(50, 50);
-   	 redPoly = new RedMorph(100, 100);
-   	 movingPoly1 = new MovingMorph(150, 100);
-   	 movingPoly2 = new MovingMorph(200, 150);
-   	 movingPoly3 = new MovingMorph(250, 200);
-   	 movingPoly4 = new MovingMorph(300, 250);
+   	 polyList = new Polymorph[]{new BluePolymorph(50, 50), 
+   			 					new RedMorph(100, 100),
+   			 					new MovingMorph(150, 100),
+   			 					new CircleMorph(100, 0),
+   			 					new FollowMorph(0, 0)};
    	 
    	 timer = new Timer(1000 / 30, this);
    	 timer.start();
@@ -53,22 +47,16 @@ public class PolymorphWindow extends JPanel implements ActionListener{
    	 g.fillRect(0, 0, 500, 500);
    	
    	 //draw polymorph
-   	 bluePoly.draw(g);
-   	 redPoly.draw(g);
-   	 movingPoly1.draw(g);
-   	 movingPoly2.draw(g);
-   	 movingPoly3.draw(g);
-   	 movingPoly4.draw(g);
+   	 for(int i = 0; i < polyList.length; i++) {
+   		 polyList[i].draw(g);
+   	 }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
    	 repaint();
-   	 bluePoly.update();
-   	 redPoly.update();
-   	 movingPoly1.update();
-   	 movingPoly2.update();
-   	 movingPoly3.update();
-   	 movingPoly4.update();
+   	for(int i = 0; i < polyList.length; i++) {
+  		 polyList[i].update();
+  	 }
     }
 }

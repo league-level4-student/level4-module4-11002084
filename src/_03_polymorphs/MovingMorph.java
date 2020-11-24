@@ -10,7 +10,6 @@ public class MovingMorph extends Polymorph {
 		super(x, y);
 	}
 	
-	@Override
 	public void update() {
 		if(getY() <= 100) {
 			moveDown = true;
