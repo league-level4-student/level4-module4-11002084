@@ -13,35 +13,35 @@ public abstract class Polymorph {
    	 this.y = y;
     }
     
-    int getX() {
+    public int getX() {
     	return x;
     }
     
-    int getY() {
+    public int getY() {
     	return y;
     }
     
-    int getWidth() {
+    public int getWidth() {
     	return width;
     }
     
-    int getHeight() {
+    public int getHeight() {
     	return height;
     }
     
-    void setX(int x) {
+    public void setX(int x) {
     	this.x = x;
     }
     
-    void setY(int y) {
+    public void setY(int y) {
     	this.y = y;
     }
     
-    void setWidth(int width) {
+    public void setWidth(int width) {
     	this.width = width;
     }
     
-    void setHeight(int height) {
+    public void setHeight(int height) {
     	this.height = height;
     }
     

@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+@SuppressWarnings("serial")
 public class PolymorphWindow extends JPanel implements ActionListener{
     public static final int WIDTH = 900;
     public static final int HEIGHT = 600;
@@ -35,7 +36,9 @@ public class PolymorphWindow extends JPanel implements ActionListener{
    			 					new RedMorph(100, 100),
    			 					new MovingMorph(150, 100),
    			 					new CircleMorph(100, 0),
-   			 					new FollowMorph(0, 0)};
+   			 					new FollowMorph(0, 0),
+   			 					new ImageMorph(200, 200),
+   			 					new MessageMorph(300, 200)};
    	 
    	 timer = new Timer(1000 / 30, this);
    	 timer.start();
@@ -55,7 +58,7 @@ public class PolymorphWindow extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
    	 repaint();
-   	for(int i = 0; i < polyList.length; i++) {
+   	 for(int i = 0; i < polyList.length; i++) {
   		 polyList[i].update();
   	 }
     }
